@@ -1,0 +1,12 @@
+language: python
+python:
+    - "3.6"
+
+services:
+    -docker
+
+before_script: pip install docker-compose
+
+# if it fails to build, it will send a notification
+script:
+    - docker-compose run app sh -c "python manage.py test && flake8"
